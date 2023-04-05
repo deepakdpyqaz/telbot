@@ -9,11 +9,21 @@ import os
 from pathlib import Path
 import multiprocessing
 from sklearn.metrics import r2_score, mean_squared_error, mean_absolute_error, mean_absolute_percentage_error
+from telegram import send_to_telegram, send_to_telegram_document
+import logging
 
-
+logging.baseConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d-%b-%y %H:%M:%S', filename='app.log', filemode='w')
 DATA_DIR = "/content/drive/MyDrive/Wind Speed/Madurai, Tamil Nadu Data"
 parameters_file = "/content/tamil_nadu/randomForestRandomized"
 
+def create_log(log):
+    log = f"Random Forest: {log}"
+    logging.info(log)
+    try:
+        send_to_telegram(log)
+    except Exception as e:
+        logging.error(str(e))
+        print(e)
 # Read data
 csvs = Path(DATA_DIR).glob("*.csv")
 tamilNaduData = pd.concat([pd.read_csv(str(csv)) for csv in csvs])
@@ -24,8 +34,8 @@ x = tamilNaduData.drop(['Wind Speed'], axis=1)
 
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=123)
 
-print('Training dataset shape:', X_train.shape, y_train.shape)
-print('Testing dataset shape:', X_test.shape, y_test.shape)
+create_log('Training dataset shape:', X_train.shape, y_train.shape)
+create_log('Testing dataset shape:', X_test.shape, y_test.shape)
 
 
 parameters = pd.read_csv(parameters_file,index_col=0)

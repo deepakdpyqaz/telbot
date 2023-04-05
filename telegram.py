@@ -1,15 +1,16 @@
 import requests
-from dotenv import load_dotenv
 import os
-load_dotenv()
+
+TELEGRAM_TOKEN = "5765471758:AAFPzn2Z2gbbe0sp6yurqxwbSmYrrGanla4"
+TELEGRAM_CHAT_ID = "1479006629"
 
 def send_to_telegram(text):
     '''
     Sends a text to telegram chat
     text: text to send
     '''
-    token = os.getenv('TELEGRAM_TOKEN')
-    chat_id = os.getenv('TELEGRAM_CHAT_ID')
+    token = TELEGRAM_TOKEN
+    chat_id = TELEGRAM_CHAT_ID
     url = f'https://api.telegram.org/bot{token}/sendMessage'
     try:
         params = {'chat_id': chat_id, 'text': text}
@@ -40,4 +41,3 @@ def send_to_telegram_document(document):
         print(e)
         return False
 
-r = send_to_telegram_document("/workspaces/rating_noise_removal/requirements.txt")
