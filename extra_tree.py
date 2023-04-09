@@ -26,8 +26,8 @@ logging.basicConfig(
     filename="extra_tree.log",
     filemode="w",
 )
-DATA_DIR = "/workspaces/telbot/data"
-parameters_file = "/workspaces/telbot/info/extraTreeRandomized.csv"
+DATA_DIR = "./data"
+parameters_file = "./info/extraTreeRandomized.csv"
 
 
 def create_log(*args):

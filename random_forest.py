@@ -27,8 +27,8 @@ logging.basicConfig(
     filename="random_forest.log",
     filemode="w",
 )
-DATA_DIR = "/workspaces/telbot/data"
-parameters_file = "/workspaces/telbot/info/randomForestRandomized.csv"
+DATA_DIR = "./data"
+parameters_file = "./info/randomForestRandomized.csv"
 
 
 def create_log(*args):
