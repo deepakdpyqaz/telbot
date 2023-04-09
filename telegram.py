@@ -25,8 +25,8 @@ def send_to_telegram_document(document):
     Sends a document to telegram chat
     document: path to file
     '''
-    token = os.getenv('TELEGRAM_TOKEN')
-    chat_id = os.getenv('TELEGRAM_CHAT_ID')
+    token = TELEGRAM_TOKEN
+    chat_id = TELEGRAM_CHAT_ID
     url = f'https://api.telegram.org/bot{token}/sendDocument'
     params = {'chat_id': chat_id}
     post_files = {'document': open(document, 'rb')}

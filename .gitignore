@@ -1,1 +1,4 @@
 __pycache__/
+*.log
+extra_tree_tn/
+random_forest_tn/
