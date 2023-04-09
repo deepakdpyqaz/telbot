@@ -1,0 +1,11 @@
+warm_start,n_estimators,min_samples_split,min_samples_leaf,max_features,max_depth,criterion,bootstrap
+True,100,6,1,log2,50,poisson,True
+True,100,6,2,log2,50,absolute_error,False
+True,400,2,1,,50,absolute_error,False
+False,100,2,2,log2,32,absolute_error,False
+True,200,6,2,log2,2,poisson,False
+True,200,2,2,,16,squared_error,True
+True,300,2,2,log2,8,friedman_mse,False
+False,300,6,1,log2,50,friedman_mse,False
+True,400,4,2,sqrt,16,poisson,True
+True,300,6,2,sqrt,50,absolute_error,False
